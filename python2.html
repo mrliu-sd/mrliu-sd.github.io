@@ -16,7 +16,7 @@
 <meta property="og:description" content="前几天在公众号【痴海】看到用python代码实现短信发送的文章，感觉以后可以结合树莓派进行监控报警信息的发送，所以就研究了一下，整个过程还是比较简单的，注册一个账户再写几行代码就可以了。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/img/mrliu.jpg">
-<meta property="og:updated_time" content="2018-10-10T02:25:47.655Z">
+<meta property="og:updated_time" content="2018-10-10T02:41:27.489Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python学习之二-通过python发送短信">
 <meta name="twitter:description" content="前几天在公众号【痴海】看到用python代码实现短信发送的文章，感觉以后可以结合树莓派进行监控报警信息的发送，所以就研究了一下，整个过程还是比较简单的，注册一个账户再写几行代码就可以了。">
@@ -165,7 +165,7 @@
         <p>前几天在公众号【痴海】看到用python代码实现短信发送的文章，感觉以后可以结合树莓派进行监控报警信息的发送，所以就研究了一下，整个过程还是比较简单的，注册一个账户再写几行代码就可以了。<a id="more"></a><br>这里用到的短信代理服务商是Twilio，国内也有不少这样的服务商，比如阿里云。选择Twilio是因为它注册后送15美金，目前国内一条短信收费0.028美金，这样算下来一个账号可以免费发500条短信，如果只是用来发送监控报警信息的话应该能用很久了。<br>点击<a href="https://www.twilio.com" target="_blank" rel="noopener">这个地址</a>进行注册，英文不好的可以用Chrome浏览器的翻译功能，用邮箱注册即可。注册好需要绑定一个用来接收短信的手机号，发送短信的号码是系统自动分配，也可以用账户里的余额购买，购买的时候注意号码提供的服务类型。<code>PS：其实没必要买，因为最后收到的短信是通过国内一个手机号发出来的</code><br>然后就是写代码，我这里单独写了一个方法，以后自己用得到的时候导入引用就行了，具体代码如下：</p>
 <h5 id="首先安装twilio库"><a href="#首先安装twilio库" class="headerlink" title="首先安装twilio库"></a>首先安装twilio库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install twilio</span><br></pre></td></tr></table></figure>
 <h5 id="然后新建SendMsg-py文件编写代码（汉字标注部分替换成自己对应的内容，系统分配的那几个可以在个人信息中查看）"><a href="#然后新建SendMsg-py文件编写代码（汉字标注部分替换成自己对应的内容，系统分配的那几个可以在个人信息中查看）" class="headerlink" title="然后新建SendMsg.py文件编写代码（汉字标注部分替换成自己对应的内容，系统分配的那几个可以在个人信息中查看）"></a>然后新建SendMsg.py文件编写代码（汉字标注部分替换成自己对应的内容，系统分配的那几个可以在个人信息中查看）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from twilio.rest import Client</span><br><span class="line">def SendMsg(notes):</span><br><span class="line">    account_sid = &apos;系统分配的SID&apos;</span><br><span class="line">    auth_token = &apos;系统分配的TOKEN&apos;</span><br><span class="line">    client = Client(account_sid, auth_token)</span><br><span class="line">    message = client.messages.create(body=notes, from_=&apos;系统分配的发送号码&apos;, to=&apos;+86你的手机号&apos;)</span><br></pre></td></tr></table></figure>
-<h5 id="最后在测试一下效果"><a href="#最后在测试一下效果" class="headerlink" title="最后在测试一下效果"></a>最后在测试一下效果</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;from SendMsg import SendMsg</span><br><span class="line">&gt;&gt;&gt;SendMsg(&quot;测试短信发送！&quot;)</span><br></pre></td></tr></table></figure>
+<h5 id="最后测试一下效果"><a href="#最后测试一下效果" class="headerlink" title="最后测试一下效果"></a>最后测试一下效果</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;from SendMsg import SendMsg</span><br><span class="line">&gt;&gt;&gt;SendMsg(&quot;测试短信发送！&quot;)</span><br></pre></td></tr></table></figure>
 <p>等待一会后就会收到一条短信。</p>
 <div align="center"><img src="/img/mrliu.jpg" alt=""></div>
 
