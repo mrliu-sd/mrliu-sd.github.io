@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="Mrliu&#39;s Blog">
 <meta property="og:description" content="7月初工作上有一些调整，从魔都调到大合肥。中间交接了一个月，然后把东西都带回家了，树莓派折腾大业就此停滞了三个月。中秋放假回到家才有时间继续折腾，因为每天带着太麻烦，就想着看看能不能搞一下内网穿透。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/img/raspi5-1.png">
+<meta property="og:image" content="http://yoursite.com/img/raspi5-1.jpg">
 <meta property="og:image" content="http://yoursite.com/img/raspi5-2.png">
 <meta property="og:image" content="http://yoursite.com/img/mrliu.jpg">
-<meta property="og:updated_time" content="2018-09-28T12:35:18.815Z">
+<meta property="og:updated_time" content="2018-10-15T02:51:18.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树梅派折腾日记之五-花生壳内网穿透">
 <meta name="twitter:description" content="7月初工作上有一些调整，从魔都调到大合肥。中间交接了一个月，然后把东西都带回家了，树莓派折腾大业就此停滞了三个月。中秋放假回到家才有时间继续折腾，因为每天带着太麻烦，就想着看看能不能搞一下内网穿透。">
-<meta name="twitter:image" content="http://yoursite.com/img/raspi5-1.png">
+<meta name="twitter:image" content="http://yoursite.com/img/raspi5-1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Mrliu&#39;s Blog" type="application/atom+xml">
   
@@ -167,7 +167,7 @@
         <p>7月初工作上有一些调整，从魔都调到大合肥。中间交接了一个月，然后把东西都带回家了，树莓派折腾大业就此停滞了三个月。中秋放假回到家才有时间继续折腾，因为每天带着太麻烦，就想着看看能不能搞一下内网穿透。<a id="more"></a><br>首先排除的是公网IP，因为现在公网IP很少了，而且也不愿意打客服电话申请。（这里有个小插曲：我重启了几次路由WAN口IP都没变，在ip138看和路由器显示的一样，还以为是公网IP）其他的像DDNS什么的也试了一下，考虑到以后可能到带到其他地方用，DDNS换一个地方还要重新设置也麻烦，ngrok、frp太复杂，所以最后选择了在树莓派上安装花生壳客户端。具体方法如下：</p>
 <h5 id="1-安装花生壳"><a href="#1-安装花生壳" class="headerlink" title="1.安装花生壳"></a>1.安装花生壳</h5><p>参考花生壳官网的教程即可，地址在这里：<a href="http://service.oray.com/question/2680.html" target="_blank" rel="noopener">花生壳 3.0 for 树莓派 安装使用攻略</a><br>这里有几个注意事项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">安装那条命令里注意查看下载后软件的版本号</span><br><span class="line">如果自己有花生壳账号的话，先用SN登陆花生壳网站，然后点右上角账号那里的切换账号，可以切回自己的账号</span><br><span class="line">新用户的别忘了参考教程购买个人体验版（目前是6元）</span><br></pre></td></tr></table></figure></p>
 <h5 id="2-设置内网穿透"><a href="#2-设置内网穿透" class="headerlink" title="2.设置内网穿透"></a>2.设置内网穿透</h5><p>按照教程设置好账号以后就需要设置内网穿透了。<br>1）点击网站左侧的【内网穿透】菜单，在打开的页面右下位置点击【添加映射】按钮，如图：</p>
-<p><img src="/img/raspi5-1.png" alt=""></p>
+<p><img src="/img/raspi5-1.jpg" alt=""></p>
 <p>2)在打开的端口映射页面中按照以下格式填写,如图：</p>
 <div align="center"><img src="/img/raspi5-2.png" height="width="></div><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">应用名称随意</span><br><span class="line">域名从下拉菜单选择一个（从外网访问这个域名，ssh中用来取代内网ip）</span><br><span class="line">映射类型选应用类（这里以ssh为例，其他的大同小异。如果是网站可以选HTTP80来映射80端口）</span><br><span class="line">外网端口用动态端口号（随机分配，外网访问时取代内网22端口）</span><br><span class="line">内网主机填树莓派的内网ip</span><br><span class="line">内网端口填22</span><br></pre></td></tr></table></figure><br><br>填好以后点击【确定】进行保存，返回内网穿透主页面应该在映射列表中看到设置好的映射，参考第一步中重启花生壳的方法重启一下，然后按照映射列表中的地址访问一下树莓派，看看是不是成功啦！<br>如果成功的的话那恭喜你已经搞定，如果没有的话参照第一步中的命令检查树莓派上的花生壳客户端是否运行，参照映射列表中的外网访问地址检查地址和端口是否正确，或者扫描下面二维码关注公众号给我留言。<br><br><br><br><div align="center"><img src="/img/mrliu.jpg" alt=""></div>
 
