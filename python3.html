@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Mrliu&#39;s Blog</title>
+  <title>Python学习之三-python3.5安装opencv3.4 | Mrliu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Mrliu&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="最近买了个csi摄像头，准备研究一下人脸识别、物体监测方面的应用，在等待到货的过程中先把opencv安装了，中间遇到一些坑，后来找到一篇文章，照做以后就成功了，所以在这里整理记录一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习之三-python3.5安装opencv3.4">
+<meta property="og:url" content="http://yoursite.com/python3.html">
 <meta property="og:site_name" content="Mrliu&#39;s Blog">
+<meta property="og:description" content="最近买了个csi摄像头，准备研究一下人脸识别、物体监测方面的应用，在等待到货的过程中先把opencv安装了，中间遇到一些坑，后来找到一篇文章，照做以后就成功了，所以在这里整理记录一下。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/img/mrliu.jpg">
+<meta property="og:updated_time" content="2018-10-19T14:01:27.342Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mrliu&#39;s Blog">
+<meta name="twitter:title" content="Python学习之三-python3.5安装opencv3.4">
+<meta name="twitter:description" content="最近买了个csi摄像头，准备研究一下人脸识别、物体监测方面的应用，在等待到货的过程中先把opencv安装了，中间遇到一些坑，后来找到一篇文章，照做以后就成功了，所以在这里整理记录一下。">
+<meta name="twitter:image" content="http://yoursite.com/img/mrliu.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Mrliu&#39;s Blog" type="application/atom+xml">
   
@@ -136,16 +142,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-python3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-python3" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/python3.html">Python学习之三-python3.5安装opencv3.4</a>
+    <h1 class="article-title" itemprop="name">
+      Python学习之三-python3.5安装opencv3.4
     </h1>
   
 
@@ -158,10 +162,47 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近买了个csi摄像头，准备研究一下人脸识别、物体监测方面的应用，在等待到货的过程中先把opencv安装了，中间遇到一些坑，后来找到一篇文章，照做以后就成功了，所以在这里整理记录一下。
-        
+        <p>最近买了个csi摄像头，准备研究一下人脸识别、物体监测方面的应用，在等待到货的过程中先把opencv安装了，中间遇到一些坑，后来找到一篇文章，照做以后就成功了，所以在这里整理记录一下。<a id="more"></a><br>主要参考<a href="https://www.jianshu.com/p/3180a253fe3c" target="_blank" rel="noopener">这个地址</a>，步骤如下：</p>
+<h5 id="安装numpy库"><a href="#安装numpy库" class="headerlink" title="安装numpy库"></a>安装numpy库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install numpy</span><br></pre></td></tr></table></figure>
+<h5 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential git cmake pkg-config -y</span><br><span class="line">sudo apt-get install libjpeg8-dev -y</span><br><span class="line">sudo apt-get install libtiff5-dev -y</span><br><span class="line">sudo apt-get install libjasper-dev -y</span><br><span class="line">sudo apt-get install libpng12-dev -y</span><br><span class="line">sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev -y</span><br><span class="line">sudo apt-get install libgtk2.0-dev -y</span><br><span class="line">sudo apt-get install libatlas-base-dev gfortran -y</span><br></pre></td></tr></table></figure>
+<h5 id="下载opencv源代码并解压（这两个文件名称一样，都下载下来，第二个会自动重命名为3-4-0-zip-1，不影响解压）"><a href="#下载opencv源代码并解压（这两个文件名称一样，都下载下来，第二个会自动重命名为3-4-0-zip-1，不影响解压）" class="headerlink" title="下载opencv源代码并解压（这两个文件名称一样，都下载下来，第二个会自动重命名为3.4.0.zip.1，不影响解压）"></a>下载opencv源代码并解压（这两个文件名称一样，都下载下来，第二个会自动重命名为3.4.0.zip.1，不影响解压）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/Itseez/opencv/archive/3.4.0.zip</span><br><span class="line">wget https://github.com/Itseez/opencv_contrib/archive/3.4.0.zip</span><br><span class="line">unzip 3.4.0.zip</span><br><span class="line">unzip 3.4.0.zip.1</span><br></pre></td></tr></table></figure>
+<p>解压后得到opencv-3.4.0、opencv_contrib-3.4.0文件夹</p>
+<h5 id="cmake"><a href="#cmake" class="headerlink" title="cmake"></a>cmake</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd opencv-3.4.0 </span><br><span class="line">mkdir build </span><br><span class="line">cd build </span><br><span class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D OPENCV_EXTRA_MODULES_PATH=/home/pi/opencv_contrib-3.4.0/modules -D BUILD_EXAMPLES=ON -D WITH_LIBV4L=ON PYTHON3_EXECUTABLE=/usr/bin/python3.5 PYTHON_INCLUDE_DIR=/usr/include/python3.5 PYTHON_LIBRARY=/usr/lib/arm-linux-gnueabihf/libpython3.5m.so PYTHON3_NUMPY_INCLUDE_DIRS=/home/pi/.local/lib/python3.5/site-packages/numpy/core/include ..</span><br></pre></td></tr></table></figure>
+<p>注意，上面cmake到最后是一行要一次执行，其中OPENCV_EXTRA_MODULES_PATH参数中的路径要改成你刚才解压的opencv_contrib-3.4.0文件夹的路径，其余几个参数如果你是通过命令升级python3.5话应该和我一样，你也可以把上面那一行复制到文本文档里自己检查一下，总之保证正确就行了。</p>
+<h5 id="编译opencv"><a href="#编译opencv" class="headerlink" title="编译opencv"></a>编译opencv</h5><p>执行下面的命令，不要用make -j4等加速方法，时间比较长，我是4d个多小时才编译好，建议vnc或连接显示器操作，这样编译的时候可以去做其他的事。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; sudo make install</span><br></pre></td></tr></table></figure></p>
+<p>另外占用磁盘空间比较大，有4G多，所以要保证有足够的空间哟。</p>
+<h5 id="编译好以后测试一下"><a href="#编译好以后测试一下" class="headerlink" title="编译好以后测试一下"></a>编译好以后测试一下</h5><p>依次执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python3</span><br><span class="line">import cv2</span><br><span class="line">cv2.__version__</span><br></pre></td></tr></table></figure></p>
+<p>如果显示3.4.0就说明成功了，开始折腾吧！</p>
+<div align="center"><img src="/img/mrliu.jpg" alt=""></div>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢您的关注！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/mrliu.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -181,16 +222,75 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/python3.html">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/python3.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/python2.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python学习之二-通过python发送短信</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -210,526 +310,14 @@
 
 
 
-
   
-    <article id="post-python2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/python2.html">Python学习之二-通过python发送短信</a>
-    </h1>
   
 
-        
-        <a href="/python2.html" class="archive-article-date">
-  	<time datetime="2018-10-10T01:05:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前几天在公众号【痴海】看到用python代码实现短信发送的文章，感觉以后可以结合树莓派进行监控报警信息的发送，所以就研究了一下，整个过程还是比较简单的，注册一个账户再写几行代码就可以了。
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/python2.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-raspi5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/raspi5.html">树梅派折腾日记之五-花生壳内网穿透</a>
-    </h1>
   
 
-        
-        <a href="/raspi5.html" class="archive-article-date">
-  	<time datetime="2018-09-28T03:43:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>7月初工作上有一些调整，从魔都调到大合肥。中间交接了一个月，然后把东西都带回家了，树莓派折腾大业就此停滞了三个月。中秋放假回到家才有时间继续折腾，因为每天带着太麻烦，就想着看看能不能搞一下内网穿透。
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/raspi//" class="article-tag-list-link color1">raspi</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/raspi5.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/python1.html">Python学习之一-用pymysql操作Mysql数据库</a>
-    </h1>
   
 
-        
-        <a href="/python1.html" class="archive-article-date">
-  	<time datetime="2018-06-25T04:52:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是Python学习系列的第一篇文章，先说一下我写这个系列的初衷，我会在Python学习系列中分享一些自己的学习心得或者踩过的雷，所以会写的比较乱，而且不适合完全零基础的人看。
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/python1.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-raspi4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/raspi4.html">树梅派折腾日记之四-GPIO操作温湿度传感器</a>
-    </h1>
-  
-
-        
-        <a href="/raspi4.html" class="archive-article-date">
-  	<time datetime="2018-06-25T03:43:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>其实操作传感器这个到手以后就研究了，但是最近工作比较多，所以一直没有写。今天就以温湿度传感器为例，来写一下树莓派操作传感器的具体方法。我这里用到的是DHT11 温湿度传感器，如果你手上的传感器和这个不一样，那请Google其他教程。
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/raspi//" class="article-tag-list-link color1">raspi</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/raspi4.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-raspi3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/raspi3.html">树梅派折腾日记之三-利用树梅派3B+自带的无线网卡设置热点</a>
-    </h1>
-  
-
-        
-        <a href="/raspi3.html" class="archive-article-date">
-  	<time datetime="2018-06-12T01:59:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近一直把Pi当作主力工作机使用，日常的文档处理目前没发现任何问题，在线看视频也基本OK，公司一个业务系统对chrome浏览器支持不太友好，会经常卡死。另外还一个比较苦恼的就是上网问题，因为办公室没有wifi网络，以前都是拿电脑共享一个热点，现在不带电脑了就需要用Pi共享。爬了两天帖子，发现教程都有点复杂，需要手动修改很多设置，由于我周末要带回家用，家里是用wifi的，到时候又要修改一次，太麻烦…所以就想找一下有没有类似的软件，可以自由开关热点，也不需要手动设置。
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/raspi//" class="article-tag-list-link color1">raspi</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/raspi3.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-raspi2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/raspi2.html">树梅派折腾日记之二-获取树莓派运行信息</a>
-    </h1>
-  
-
-        
-        <a href="/raspi2.html" class="archive-article-date">
-  	<time datetime="2018-06-10T09:26:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>其实有很多现成的软件可以查看树莓派信息，比如pi-dashboard、宝塔等，但是既然是玩就要自己折腾一下不是吗。所以在网上找了一下可以获取相关信息的方法，通过python来实现，自己在基础上稍微做了一些修改：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">把获取信息的间隔改为30秒</span><br><span class="line">加入了计数功能</span><br><span class="line">加入时间显示</span><br><span class="line">输出内容设置为汉字</span><br></pre></td></tr></table></figure></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/raspi//" class="article-tag-list-link color1">raspi</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/raspi2.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-raspi1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/raspi1.html">树梅派折腾日记之一-初识树莓派</a>
-    </h1>
-  
-
-        
-        <a href="/raspi1.html" class="archive-article-date">
-  	<time datetime="2018-06-08T04:04:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> 很早就知道树莓派，但是迟迟没有入手，树莓派基金会终于在今年三月份发布了3B+，虽然相对前作升级不大，但是本着买新不买旧的原则还是入手了3B+。历经了一个多月的等待，终于在5月底拿到了机器。因为在等待的过程中已经买好了配件、传感器，并已经烧录好TF卡，所以到手后直接上卡开机，一气呵成，顺利进入系统。然后就是各种软件的安装调试，系统观感的美化，如此收拾一般，竟也初具模样。<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/raspi//" class="article-tag-list-link color1">raspi</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/raspi1.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -758,8 +346,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
