@@ -16,7 +16,7 @@
 <meta property="og:description" content="最近买了个csi摄像头，准备研究一下人脸识别、物体监测方面的应用，在等待到货的过程中先把opencv安装了，中间遇到一些坑，后来找到一篇文章，照做以后就成功了，所以在这里整理记录一下。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/img/mrliu.jpg">
-<meta property="og:updated_time" content="2018-10-22T01:14:37.345Z">
+<meta property="og:updated_time" content="2018-10-22T01:17:04.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python学习之三-python3.5安装opencv3.4">
 <meta name="twitter:description" content="最近买了个csi摄像头，准备研究一下人脸识别、物体监测方面的应用，在等待到货的过程中先把opencv安装了，中间遇到一些坑，后来找到一篇文章，照做以后就成功了，所以在这里整理记录一下。">
@@ -170,7 +170,7 @@
 <h5 id="cmake"><a href="#cmake" class="headerlink" title="cmake"></a>cmake</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd opencv-3.4.0 </span><br><span class="line">mkdir build </span><br><span class="line">cd build </span><br><span class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D OPENCV_EXTRA_MODULES_PATH=/home/pi/opencv_contrib-3.4.0/modules -D BUILD_EXAMPLES=ON -D WITH_LIBV4L=ON PYTHON3_EXECUTABLE=/usr/bin/python3.5 PYTHON_INCLUDE_DIR=/usr/include/python3.5 PYTHON_LIBRARY=/usr/lib/arm-linux-gnueabihf/libpython3.5m.so PYTHON3_NUMPY_INCLUDE_DIRS=/home/pi/.local/lib/python3.5/site-packages/numpy/core/include ..</span><br></pre></td></tr></table></figure>
 <p>注意，上面cmake到最后是一行要一次执行，其中OPENCV_EXTRA_MODULES_PATH参数中的路径要改成你刚才解压的opencv_contrib-3.4.0文件夹的路径，其余几个参数如果你是通过命令升级python3.5话应该和我一样，你也可以把上面那一行复制到文本文档里自己检查一下，总之保证正确就行了。</p>
 <h5 id="编译opencv"><a href="#编译opencv" class="headerlink" title="编译opencv"></a>编译opencv</h5><p>执行下面的命令，不要用make -j4等加速方法，时间比较长，我是4d个多小时才编译好，建议vnc或连接显示器操作，这样编译的时候可以去做其他的事。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; sudo make install</span><br></pre></td></tr></table></figure></p>
-<p>另外占用磁盘空间比较大有4G多，所以要保证有足够的空间哟。</p>
+<p>另外占用磁盘空间比较大,有4G之多，所以要保证有足够的空间哟。</p>
 <h5 id="编译好以后测试一下"><a href="#编译好以后测试一下" class="headerlink" title="编译好以后测试一下"></a>编译好以后测试一下</h5><p>依次执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python3</span><br><span class="line">import cv2</span><br><span class="line">cv2.__version__</span><br></pre></td></tr></table></figure></p>
 <p>如果显示3.4.0就说明成功了，开始折腾吧！</p>
 <div align="center"><img src="/img/mrliu.jpg" alt=""></div>
