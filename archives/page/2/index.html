@@ -6,21 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>树梅派折腾日记之六-开机自动运行python 脚本 | Mrliu&#39;s Blog</title>
+  <title>Archives | Mrliu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="写了个小程序把树莓派的基本信息写入数据库，同时设置报警规则，如果出现报警信息就短信提醒。具体的实现方式可以看python 学习系列的前两篇文章。程序写好后发现通过nohup 运行有不少局限，虽然可以后台运行，但是每次重启Pi 都要再运行一次，本着能自动绝不动手的原则，就研究了一下开机自启。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="树梅派折腾日记之六-开机自动运行python 脚本">
-<meta property="og:url" content="http://yoursite.com/raspi6.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Mrliu&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
 <meta property="og:site_name" content="Mrliu&#39;s Blog">
-<meta property="og:description" content="写了个小程序把树莓派的基本信息写入数据库，同时设置报警规则，如果出现报警信息就短信提醒。具体的实现方式可以看python 学习系列的前两篇文章。程序写好后发现通过nohup 运行有不少局限，虽然可以后台运行，但是每次重启Pi 都要再运行一次，本着能自动绝不动手的原则，就研究了一下开机自启。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/img/mrliu.jpg">
-<meta property="og:updated_time" content="2018-10-24T01:59:52.274Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="树梅派折腾日记之六-开机自动运行python 脚本">
-<meta name="twitter:description" content="写了个小程序把树莓派的基本信息写入数据库，同时设置报警规则，如果出现报警信息就短信提醒。具体的实现方式可以看python 学习系列的前两篇文章。程序写好后发现通过nohup 运行有不少局限，虽然可以后台运行，但是每次重启Pi 都要再运行一次，本着能自动绝不动手的原则，就研究了一下开机自启。">
-<meta name="twitter:image" content="http://yoursite.com/img/mrliu.jpg">
+<meta name="twitter:title" content="Mrliu&#39;s Blog">
   
     <link rel="alternative" href="/atom.xml" title="Mrliu&#39;s Blog" type="application/atom+xml">
   
@@ -142,65 +136,37 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-raspi6" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      树梅派折腾日记之六-开机自动运行python 脚本
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/raspi1.html" class="archive-article-date">
+  	<time datetime="2018-06-08T04:04:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/raspi1.html">树梅派折腾日记之一-初识树莓派</a>
     </h1>
   
 
-        
-        <a href="/raspi6.html" class="archive-article-date">
-  	<time datetime="2018-10-23T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>写了个小程序把树莓派的基本信息写入数据库，同时设置报警规则，如果出现报警信息就短信提醒。具体的实现方式可以看python 学习系列的前两篇文章。程序写好后发现通过nohup 运行有不少局限，虽然可以后台运行，但是每次重启Pi 都要再运行一次，本着能自动绝不动手的原则，就研究了一下开机自启。<a id="more"></a><br>关于开机自启程序网上普遍有两种做法，第一种是修改/etc/rc.local，在文件最后加上python 执行的命令，但是我试了好多遍都不行，所以果断选择了第二种方法：</p>
-<h5 id="创建一个xxx-desktop-文件"><a href="#创建一个xxx-desktop-文件" class="headerlink" title="创建一个xxx.desktop 文件"></a>创建一个xxx.desktop 文件</h5><p>进入/home/pi/.config/autostart 文件夹，创建一个空白文件，文件名为xxx.desktop，后缀必须是.desktop，前面随意，文件内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Type=Application</span><br><span class="line">Exec=/usr/bin/python3 /home/git/pi/Piinfo_Msg.py</span><br></pre></td></tr></table></figure></p>
-<p>只需把【Exec】后面的两个路径分别改成python 执行程序和需要自启的python 脚本即可。<br>其实还有很多参数，比如Name、Comment、Icon 分别表示启动项的名称、备注和图标，但是这些都不重要，按我说的那个设置好重启就可以了。</p>
-<div align="center"><img src="/img/mrliu.jpg" alt=""></div>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢您的关注！<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/mrliu.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        <div class="article-info info-on-right">
+          
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -213,112 +179,20 @@
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/raspi6.html" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/python4.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Python学习之四-简单实现微信机器人
-        
-      </div>
-    </a>
   
   
-    <a href="/python3.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python学习之三-python3.5安装opencv3.4</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -348,8 +222,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

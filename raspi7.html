@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>树梅派折腾日记之六-开机自动运行python 脚本 | Mrliu&#39;s Blog</title>
+  <title>树梅派折腾日记之七-搭建HEXO博客 | Mrliu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="写了个小程序把树莓派的基本信息写入数据库，同时设置报警规则，如果出现报警信息就短信提醒。具体的实现方式可以看python 学习系列的前两篇文章。程序写好后发现通过nohup 运行有不少局限，虽然可以后台运行，但是每次重启Pi 都要再运行一次，本着能自动绝不动手的原则，就研究了一下开机自启。">
+  <meta name="description" content="程序员一般都会有个自己的博客，用来分享自己的心路历程，还可以作为面试时候的加分项。虽然现在有了微信公众号，可以很方便的发表文章，和关注者互动，但是个人感觉博客也是有必要的，可以拓宽自己与世界交流的渠道嘛。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树梅派折腾日记之六-开机自动运行python 脚本">
-<meta property="og:url" content="http://yoursite.com/raspi6.html">
+<meta property="og:title" content="树梅派折腾日记之七-搭建HEXO博客">
+<meta property="og:url" content="http://yoursite.com/raspi7.html">
 <meta property="og:site_name" content="Mrliu&#39;s Blog">
-<meta property="og:description" content="写了个小程序把树莓派的基本信息写入数据库，同时设置报警规则，如果出现报警信息就短信提醒。具体的实现方式可以看python 学习系列的前两篇文章。程序写好后发现通过nohup 运行有不少局限，虽然可以后台运行，但是每次重启Pi 都要再运行一次，本着能自动绝不动手的原则，就研究了一下开机自启。">
+<meta property="og:description" content="程序员一般都会有个自己的博客，用来分享自己的心路历程，还可以作为面试时候的加分项。虽然现在有了微信公众号，可以很方便的发表文章，和关注者互动，但是个人感觉博客也是有必要的，可以拓宽自己与世界交流的渠道嘛。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/img/mrliu.jpg">
-<meta property="og:updated_time" content="2018-10-24T01:59:52.274Z">
+<meta property="og:updated_time" content="2018-10-24T02:34:08.802Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="树梅派折腾日记之六-开机自动运行python 脚本">
-<meta name="twitter:description" content="写了个小程序把树莓派的基本信息写入数据库，同时设置报警规则，如果出现报警信息就短信提醒。具体的实现方式可以看python 学习系列的前两篇文章。程序写好后发现通过nohup 运行有不少局限，虽然可以后台运行，但是每次重启Pi 都要再运行一次，本着能自动绝不动手的原则，就研究了一下开机自启。">
+<meta name="twitter:title" content="树梅派折腾日记之七-搭建HEXO博客">
+<meta name="twitter:description" content="程序员一般都会有个自己的博客，用来分享自己的心路历程，还可以作为面试时候的加分项。虽然现在有了微信公众号，可以很方便的发表文章，和关注者互动，但是个人感觉博客也是有必要的，可以拓宽自己与世界交流的渠道嘛。">
 <meta name="twitter:image" content="http://yoursite.com/img/mrliu.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Mrliu&#39;s Blog" type="application/atom+xml">
@@ -142,29 +142,33 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-raspi6" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-raspi7" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      树梅派折腾日记之六-开机自动运行python 脚本
+      树梅派折腾日记之七-搭建HEXO博客
     </h1>
   
 
         
-        <a href="/raspi6.html" class="archive-article-date">
-  	<time datetime="2018-10-23T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-23</time>
+        <a href="/raspi7.html" class="archive-article-date">
+  	<time datetime="2018-10-25T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>写了个小程序把树莓派的基本信息写入数据库，同时设置报警规则，如果出现报警信息就短信提醒。具体的实现方式可以看python 学习系列的前两篇文章。程序写好后发现通过nohup 运行有不少局限，虽然可以后台运行，但是每次重启Pi 都要再运行一次，本着能自动绝不动手的原则，就研究了一下开机自启。<a id="more"></a><br>关于开机自启程序网上普遍有两种做法，第一种是修改/etc/rc.local，在文件最后加上python 执行的命令，但是我试了好多遍都不行，所以果断选择了第二种方法：</p>
-<h5 id="创建一个xxx-desktop-文件"><a href="#创建一个xxx-desktop-文件" class="headerlink" title="创建一个xxx.desktop 文件"></a>创建一个xxx.desktop 文件</h5><p>进入/home/pi/.config/autostart 文件夹，创建一个空白文件，文件名为xxx.desktop，后缀必须是.desktop，前面随意，文件内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Type=Application</span><br><span class="line">Exec=/usr/bin/python3 /home/git/pi/Piinfo_Msg.py</span><br></pre></td></tr></table></figure></p>
-<p>只需把【Exec】后面的两个路径分别改成python 执行程序和需要自启的python 脚本即可。<br>其实还有很多参数，比如Name、Comment、Icon 分别表示启动项的名称、备注和图标，但是这些都不重要，按我说的那个设置好重启就可以了。</p>
+        <p>程序员一般都会有个自己的博客，用来分享自己的心路历程，还可以作为面试时候的加分项。虽然现在有了微信公众号，可以很方便的发表文章，和关注者互动，但是个人感觉博客也是有必要的，可以拓宽自己与世界交流的渠道嘛。<a id="more"></a><br>搭建博客的方法有很多，功能强大如wordpress，便捷如CSDN、简书，所以我选择了hexo+github，哈哈…主要是因为hexo 结合github 可以实现独立的域名访问，简洁高效且支撑markdown，平时管理也比较方便，并且程序员对github 的感情那不用说了吧。</p>
+<h5 id="安装git、nodejs"><a href="#安装git、nodejs" class="headerlink" title="安装git、nodejs"></a>安装git、nodejs</h5><p>安装这两个程序的教程一搜一大堆就不再赘述了，安装完分别输入以下命令验证是否正确安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure></p>
+<p>如果能够出现版本号信息就说明安装正确，否则的话检查自己的安装过程是否对。</p>
+<h5 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h5><p>1）创建一个文件夹用与存放本地博客文件，假设文件夹名叫blog<br>2）进入上一步创建的文件夹并且安装hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd blog</span><br><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure></p>
+<p>3）安装完输入hexo -v验证是否成功<br>4）输入hexo init，初始化文件夹<br>5）输入npm install，安装所需组件<br>6）输入hexo g，初始化博客<br>7）输入hexo s，启动博客，出现以下内容后在浏览器输入http://你的ip:4000查看网站是否可以访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure></p>
+<p>8）一切正常的话你的博客已经搭好了，想要关闭直接Ctrl+C即可</p>
+<h5 id="一些命令"><a href="#一些命令" class="headerlink" title="一些命令"></a>一些命令</h5><p>现在博客还只能本地访问，并且是默认主题，由于每个人审美不同，关于主题的设置请自行搜索。另外，受篇幅限制，集成到github我们将在下一篇介绍。<br>下面是一些常见命令：<br>1）hexo g –初始化博客<br>2）hexo s –启动博客<br>3）hexo d –部署博客<br>4）hexo clean –清除缓存文件 (db.json)和已生成的静态文件(public)<br>5）hexo new ‘文件名’ –新建静态文章，命令会在blog/source/_posts 文件夹中新建一个’文件名.md’文件，可以用‘nano 文件名.md’来编辑文章内容</p>
 <div align="center"><img src="/img/mrliu.jpg" alt=""></div>
 
       
@@ -261,7 +265,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/raspi6.html" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/raspi7.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -275,18 +279,9 @@
   
 <nav id="article-nav">
   
-    <a href="/python4.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Python学习之四-简单实现微信机器人
-        
-      </div>
-    </a>
   
-  
-    <a href="/python3.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python学习之三-python3.5安装opencv3.4</div>
+    <a href="/python4.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python学习之四-简单实现微信机器人</div>
       <i class="icon-circle-right"></i>
     </a>
   
