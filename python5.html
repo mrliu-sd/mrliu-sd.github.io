@@ -6,22 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>树梅派折腾日记之八-Hexo+Github | Mrliu&#39;s Blog</title>
+  <title>Python学习之五-爬虫入门（爬取静态网页） | Mrliu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="上一篇提到把hexo 搭建的网站部署到github，今天我们就把坑填上。">
+  <meta name="description" content="好久不见，失踪人口今天回归了。今天写一下爬取静态网页，并且将爬取的数据存入文本文档。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树梅派折腾日记之八-Hexo+Github">
-<meta property="og:url" content="http://yoursite.com/raspi8.html">
+<meta property="og:title" content="Python学习之五-爬虫入门（爬取静态网页）">
+<meta property="og:url" content="http://yoursite.com/python5.html">
 <meta property="og:site_name" content="Mrliu&#39;s Blog">
-<meta property="og:description" content="上一篇提到把hexo 搭建的网站部署到github，今天我们就把坑填上。">
+<meta property="og:description" content="好久不见，失踪人口今天回归了。今天写一下爬取静态网页，并且将爬取的数据存入文本文档。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/img/raspi8-1.png">
+<meta property="og:image" content="http://yoursite.com/img/%20python5-1.png">
 <meta property="og:image" content="http://yoursite.com/img/mrliu.jpg">
-<meta property="og:updated_time" content="2018-10-25T02:01:10.966Z">
+<meta property="og:updated_time" content="2018-11-28T07:54:09.613Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="树梅派折腾日记之八-Hexo+Github">
-<meta name="twitter:description" content="上一篇提到把hexo 搭建的网站部署到github，今天我们就把坑填上。">
-<meta name="twitter:image" content="http://yoursite.com/img/raspi8-1.png">
+<meta name="twitter:title" content="Python学习之五-爬虫入门（爬取静态网页）">
+<meta name="twitter:description" content="好久不见，失踪人口今天回归了。今天写一下爬取静态网页，并且将爬取的数据存入文本文档。">
+<meta name="twitter:image" content="http://yoursite.com/img/%20python5-1.png">
   
     <link rel="alternative" href="/atom.xml" title="Mrliu&#39;s Blog" type="application/atom+xml">
   
@@ -143,34 +143,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-raspi8" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-python5" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      树梅派折腾日记之八-Hexo+Github
+      Python学习之五-爬虫入门（爬取静态网页）
     </h1>
   
 
         
-        <a href="/raspi8.html" class="archive-article-date">
-  	<time datetime="2018-10-26T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-26</time>
+        <a href="/python5.html" class="archive-article-date">
+  	<time datetime="2018-11-28T14:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>上一篇提到把hexo 搭建的网站部署到github，今天我们就把坑填上。<a id="more"></a><br>在树梅派本地搭好的博客有个问题就是没法直接外网访问，如果想发布到外网无外乎以下几种方法：<br>1）自己买一个域名，这种方法简单粗暴，但是需要外网ip 并且域名需要备案<br>2）通过花生壳内网穿透发布，这种方法受流量限制，内测版的每月1G流量支撑不了太大的访问两，再加流量就要付费<br>3）有人说可以买个虚拟空间，但是那就脱离了用树梅派折腾的初衷了<br>4）github + hexo，简洁！高效！！<br>好了，话不多说、言归正传：</p>
-<h5 id="注册github"><a href="#注册github" class="headerlink" title="注册github"></a>注册github</h5><p>开发人员基本都有github 帐号，没有的话去注册一个，看不懂英文可以用chrome 浏览器自带的全文翻译功能</p>
-<h5 id="设置软件仓库"><a href="#设置软件仓库" class="headerlink" title="设置软件仓库"></a>设置软件仓库</h5><p>1）按照下图中标注的顺序的点击，进入仓库新建界面<br><img src="/img/raspi8-1.png" alt=""></p>
-<p>2）在‘Repository name’中填入‘[你的github用户名].github.io’后创建仓库，必须填这个，不然没法用短网址访问，其余的默认<br>3）到上一篇hexo 安装的根目录下找到_comfig.yml，找到deploy，并把内容改为以下格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  repo: git@github.com:[你的github用户名]/[你的github用户名].github.io.git</span><br><span class="line">  type: git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
-<h5 id="安装git-依赖包"><a href="#安装git-依赖包" class="headerlink" title="安装git 依赖包"></a>安装git 依赖包</h5><p>进入网站根目录，执行以下代码安装依赖包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<h5 id="设置ssh"><a href="#设置ssh" class="headerlink" title="设置ssh"></a>设置ssh</h5><p>设置ssh 网上教程比较多，也可以参考官方文档：<a href="https://help.github.com/articles/connecting-to-github-with-ssh" target="_blank" rel="noopener">https://help.github.com/articles/connecting-to-github-with-ssh</a></p>
-<h5 id="发布网站"><a href="#发布网站" class="headerlink" title="发布网站"></a>发布网站</h5><p>进入网站根目录，执行以下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
-<p>一定要按照这两个命令的顺序执行，如果出现了仓库权限的情况可以先用‘hexo clean’清空缓存再发布试试<br>出现发布成功提示后稍等一小会用https://[你的github用户名].github.io访问试试吧</p>
+        <p>好久不见，失踪人口今天回归了。今天写一下爬取静态网页，并且将爬取的数据存入文本文档。<a id="more"></a><br>咱们以爬去豆瓣读书中《阿特拉斯耸耸肩》的书评为例，：</p>
+<h5 id="首先找到需要爬取内容的位置"><a href="#首先找到需要爬取内容的位置" class="headerlink" title="首先找到需要爬取内容的位置"></a>首先找到需要爬取内容的位置</h5><p>1）打开<a href="https://book.douban.com/subject/20376605/comments/hot?p=1" target="_blank" rel="noopener">书评网页</a><br>2）同时按下ctrl + shift + i 打开开发者工具（chrome浏览器）<br>3）在开发者工具中移动鼠标选中不同的代码块网页中就会有不同的区域被选中，经过多次尝试我们可以找到某一条书评的代码块，如图：<br><img src="/img/ python5-1.png" alt=""></p>
+<h5 id="安装python库"><a href="#安装python库" class="headerlink" title="安装python库"></a>安装python库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install bs4</span><br><span class="line">pip install urllib</span><br></pre></td></tr></table></figure>
+<h5 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from urllib.request import urlopen</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">import time</span><br><span class="line">num = 0</span><br><span class="line">#获取网页内容</span><br><span class="line">html = urlopen(&apos;https://book.douban.com/subject/20376605/comments/hot?p=1&apos;)</span><br><span class="line">bs_obj = BeautifulSoup(html.read(),&apos;html.parser&apos;)</span><br><span class="line">#提取需要的信息</span><br><span class="line">text_list = bs_obj.find_all(&apos;p&apos;,&apos;comment-content&apos;)</span><br><span class="line">#设置存储文件路径</span><br><span class="line">path = &apos;D:/&apos; + time.strftime(&quot;%Y-%m-%d&quot;, time.localtime()) + &apos;.txt&apos;</span><br><span class="line">file = open(path,&apos;a+&apos;,encoding=&apos;UTF-8&apos;)</span><br><span class="line">#查找内容并写入文件</span><br><span class="line">for text in text_list:</span><br><span class="line">    num += 1</span><br><span class="line">    file.write(str(num) + str(text.get_text()))</span><br><span class="line">file.close()</span><br><span class="line">html.close()</span><br></pre></td></tr></table></figure>
+<p>执行以上代码就可以在D盘根目录看到一个以当天日期名命的文本文档，里面的内容就是《阿特拉斯耸耸肩》书评第一页的20条评论。<br>这样就只爬取了20条，如果我们想要爬取更多的怎么办呢，通过网页我们可以看到总共有383条、每页大约20条，经测试总共有27页，并且url中’P=’后面的数字就是页码，然后为了反爬我们加上一个延时，下面我们改造一下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from urllib.request import urlopen</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">import time</span><br><span class="line">num = 0</span><br><span class="line">for page in range(28):</span><br><span class="line">    time.sleep(1)</span><br><span class="line">    html = urlopen(&apos;https://book.douban.com/subject/20376605/comments/hot?p=&#123;&#125;&apos;.format(page))</span><br><span class="line">    bs_obj = BeautifulSoup(html.read(),&apos;html.parser&apos;)</span><br><span class="line">    text_list = bs_obj.find_all(&apos;p&apos;,&apos;comment-content&apos;)</span><br><span class="line">    path = &apos;D:/&apos; + time.strftime(&quot;%Y-%m-%d&quot;, time.localtime()) + &apos;.txt&apos;</span><br><span class="line">    file = open(path,&apos;a+&apos;,encoding=&apos;UTF-8&apos;)</span><br><span class="line">    for text in text_list:</span><br><span class="line">        num += 1</span><br><span class="line">        file.write(str(num) + str(text.get_text()))</span><br><span class="line">file.close()</span><br><span class="line">html.close()</span><br></pre></td></tr></table></figure></p>
+<p>等一两分钟后就可以在文本里看到所有的书评了。<br>这里有一个地方需要注意，就是页码的循环，我们总共有27页，所以是range(28)，如果这里写27就会少爬一页。</p>
 <div align="center"><img src="/img/mrliu.jpg" alt=""></div>
 
       
@@ -212,7 +210,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/raspi//" class="article-tag-list-link color1">raspi</a>
+        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
@@ -267,7 +265,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/raspi8.html" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/python5.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -281,18 +279,9 @@
   
 <nav id="article-nav">
   
-    <a href="/python5.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Python学习之五-爬虫入门（爬取静态网页）
-        
-      </div>
-    </a>
   
-  
-    <a href="/raspi7.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">树梅派折腾日记之七-搭建HEXO博客</div>
+    <a href="/raspi8.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">树梅派折腾日记之八-Hexo+Github</div>
       <i class="icon-circle-right"></i>
     </a>
   
