@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>树梅派折腾日记之八-Hexo+Github | Mrliu&#39;s Blog</title>
+  <title>树莓派折腾日记之八-Hexo+Github | Mrliu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="上一篇提到把hexo 搭建的网站部署到github，今天我们就把坑填上。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树梅派折腾日记之八-Hexo+Github">
+<meta property="og:title" content="树莓派折腾日记之八-Hexo+Github">
 <meta property="og:url" content="http://yoursite.com/raspi8.html">
 <meta property="og:site_name" content="Mrliu&#39;s Blog">
 <meta property="og:description" content="上一篇提到把hexo 搭建的网站部署到github，今天我们就把坑填上。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/img/raspi8-1.png">
 <meta property="og:image" content="http://yoursite.com/img/mrliu.jpg">
-<meta property="og:updated_time" content="2018-10-25T02:01:10.966Z">
+<meta property="og:updated_time" content="2018-11-30T03:33:44.674Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="树梅派折腾日记之八-Hexo+Github">
+<meta name="twitter:title" content="树莓派折腾日记之八-Hexo+Github">
 <meta name="twitter:description" content="上一篇提到把hexo 搭建的网站部署到github，今天我们就把坑填上。">
 <meta name="twitter:image" content="http://yoursite.com/img/raspi8-1.png">
   
@@ -62,7 +62,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/categories/raspi/">树梅派</a></li>
+				<li><a href="/categories/raspi/">树莓派</a></li>
 	        
 				<li><a href="/categories/python/">Python</a></li>
 	        
@@ -126,7 +126,7 @@
 				
 					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/categories/raspi/">树梅派</a></li>
+					<li style="width: 33.333333333333336%"><a href="/categories/raspi/">树莓派</a></li>
 		        
 					<li style="width: 33.333333333333336%"><a href="/categories/python/">Python</a></li>
 		        
@@ -150,7 +150,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      树梅派折腾日记之八-Hexo+Github
+      树莓派折腾日记之八-Hexo+Github
     </h1>
   
 
@@ -163,7 +163,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>上一篇提到把hexo 搭建的网站部署到github，今天我们就把坑填上。<a id="more"></a><br>在树梅派本地搭好的博客有个问题就是没法直接外网访问，如果想发布到外网无外乎以下几种方法：<br>1）自己买一个域名，这种方法简单粗暴，但是需要外网ip 并且域名需要备案<br>2）通过花生壳内网穿透发布，这种方法受流量限制，内测版的每月1G流量支撑不了太大的访问两，再加流量就要付费<br>3）有人说可以买个虚拟空间，但是那就脱离了用树梅派折腾的初衷了<br>4）github + hexo，简洁！高效！！<br>好了，话不多说、言归正传：</p>
+        <p>上一篇提到把hexo 搭建的网站部署到github，今天我们就把坑填上。<a id="more"></a><br>在树莓派本地搭好的博客有个问题就是没法直接外网访问，如果想发布到外网无外乎以下几种方法：<br>1）自己买一个域名，这种方法简单粗暴，但是需要外网ip 并且域名需要备案<br>2）通过花生壳内网穿透发布，这种方法受流量限制，内测版的每月1G流量支撑不了太大的访问两，再加流量就要付费<br>3）有人说可以买个虚拟空间，但是那就脱离了用树莓派折腾的初衷了<br>4）github + hexo，简洁！高效！！<br>好了，话不多说、言归正传：</p>
 <h5 id="注册github"><a href="#注册github" class="headerlink" title="注册github"></a>注册github</h5><p>开发人员基本都有github 帐号，没有的话去注册一个，看不懂英文可以用chrome 浏览器自带的全文翻译功能</p>
 <h5 id="设置软件仓库"><a href="#设置软件仓库" class="headerlink" title="设置软件仓库"></a>设置软件仓库</h5><p>1）按照下图中标注的顺序的点击，进入仓库新建界面<br><img src="/img/raspi8-1.png" alt=""></p>
 <p>2）在‘Repository name’中填入‘[你的github用户名].github.io’后创建仓库，必须填这个，不然没法用短网址访问，其余的默认<br>3）到上一篇hexo 安装的根目录下找到_comfig.yml，找到deploy，并把内容改为以下格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  repo: git@github.com:[你的github用户名]/[你的github用户名].github.io.git</span><br><span class="line">  type: git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
@@ -292,7 +292,7 @@
   
   
     <a href="/raspi7.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">树梅派折腾日记之七-搭建HEXO博客</div>
+      <div class="article-nav-title">树莓派折腾日记之七-搭建HEXO博客</div>
       <i class="icon-circle-right"></i>
     </a>
   
